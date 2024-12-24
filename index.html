@@ -1,21 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>RPiCODE</title>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Getting Client's IP</title>
     <style>
-    .iframe {
-      width: 100%;
-      height: 667px;
-    }
+        p, h1 {
+            color: green;
+        }
     </style>
-  </head>
-  <body>
-    <script type="application/javascript">
-      function getIP(json) {
-        document.write("My public IP address is: ", json.ip);
-      }
+</head>
+
+<body>
+    <center>
+        <h1>GeeksforGeeks</h1>
+        <h3>Public IP Address of user is:</h3>
+        <p id="ip-address"></p>
+    </center>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch the IP address from the API
+            fetch("https://api.ipify.org?format=json")
+                .then(response => response.json())
+                .then(data => {
+                    // Display the IP address on the screen
+                    document.getElementById("ip-address").textContent = data.ip;
+                })
+                .catch(error => {
+                    console.error("Error fetching IP address:", error);
+                });
+        });
     </script>
-    <script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
-  </body>
+</body>
+
 </html>
