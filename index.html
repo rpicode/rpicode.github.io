@@ -50,7 +50,7 @@
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
 
-            set(ref(database, 'clientIPs/' + timestamp), {
+            set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
                 time: timestamp
             })
