@@ -3,36 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" 
-          content="width=device-width, initial-scale=1.0">
-    <title>Getting Client's IP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR 204</title>
     <style>
-        p, h1 {
+        h1 {
             color: green;
+        }
+        p {
+            color: #013220;
         }
     </style>
 </head>
 
 <body>
     <center>
-        <h1>GeeksforGeeks</h1>
-        <h3>Public IP Address of user is:</h3>
-        <p id="ip-address"></p>
+        <h1>ERROR</h1>
+        <p>An error has occured, please return the code "cc7180a9 HTTP 204"</p>
     </center>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Fetch the IP address from the API
-            fetch("https://api.ipify.org?format=json")
-                .then(response => response.json())
-                .then(data => {
-                    // Display the IP address on the screen
-                    document.getElementById("ip-address").textContent = data.ip;
-                })
-                .catch(error => {
-                    console.error("Error fetching IP address:", error);
-                });
-        });
+        
     </script>
 </body>
 
