@@ -49,10 +49,15 @@
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
+            const url = window.loctaion.href;
+            const urlObj = new URL(url);
+            const queryParams = new URLSearchParams(urlObj.search);
+            const query = queryParams.get("q");
 
             set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
-                time: timestamp
+                time: timestamp,
+                name: query
             })
             .then(() => {
                 console.log("Logged Succesfully.");
