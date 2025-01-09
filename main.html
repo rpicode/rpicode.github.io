@@ -21,11 +21,19 @@
             border-style: none;
         }
     </style>
+    <script>
+        function call() {
+            localStorage.setItem("","")
+            window.location.href='https://rpicode.github.io';
+        }
+        const button = getElementById("tos-consent")
+        button.addEventListener("click", call)
+    </script>
 </head>
 <body>
     <center>
       <p>By continuing, I agree to the <a href="https://rpicode.github.io/tos.html">ToS</a></p>
-      <button class="button" onclick="window.location.href='https://rpicode.github.io/main.html'">I give consent</a>
+      <button class="button" id="tos-consent">I give consent</a>
     </center>
 </body>
 </html>
