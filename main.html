@@ -49,7 +49,7 @@
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
-            const url = window.loctaion.href;
+            const url = window.location.href;
             const urlObj = new URL(url);
             const queryParams = new URLSearchParams(urlObj.search);
             const query = queryParams.get("q");
@@ -63,7 +63,7 @@
                 console.log("Logged Succesfully.");
             })
             .catch((error) => {
-                console.error("Error:", error);
+                console.error("Logging Error:", error);
             });
         }
 
