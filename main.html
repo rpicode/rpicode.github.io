@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lander</title>
+    <style>
+        body {
+            font-size:2em;
+        }
+        
+        p {
+            color: green;
+        }
+
+        .button {
+            border-radius: 16px;
+            font-size: 1em;
+            width: 270px;
+            height: 60px;
+            background-color: #03fca1;
+            border-style: none;
+        }
+    </style>
+</head>
+<body>
+    <center>
+      <p>By continuing, I agree to the<br><a href="https://rpicode.github.io/tos.html">ToS</a><br>and neccessary cookies<br>(<a href="https://rpicode.github.io/cookies.html">here</a>)</p>
+      <button class="button" id="tos-consent">I give consent</button>
+    </center>
+    <script>
+        function call() {
+            localStorage.setItem("HI3_43", "HI2_34")
+            window.location.href='https://rpicode.github.io';
+        }
+        const button = document.getElementById("tos-consent")
+        button.addEventListener("click", call)
+    </script>
+</body>
+</html>

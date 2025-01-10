@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERROR 204</title>
+    <title>ERROR 200</title>
     <style>
         h1 {
-            color: green;
+            font-size: 2em;
+            color: chartreuse;
         }
 
-        p {
-            color: #013220;
+        .text { 
+            color: #07e6bd;
+        }
+        .footnote {
+            position: absolute;
+            margin: auto;
+            bottom: 0px;
+            font-style: italic;
         }
     </style>
+    <script>
+        if(localStorage.getItem("HI3_43")=="HI2_34") {
+            // hi :/
+        } else {
+            window.location.href = "/main.html"
+        }
+    </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
@@ -49,27 +62,44 @@
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
-
+            
             set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
-                time: timestamp
+                time: timestamp,
+                name: query
             })
             .then(() => {
                 console.log("Logged Succesfully.");
             })
             .catch((error) => {
-                console.error("Error:", error);
+                console.error("Logging Error:", error);
             });
         }
-
-        // when the website/whatever loads
-        document.addEventListener('DOMContentLoaded', logClientIP);
+        
+        const url = window.location.href;
+        const urlObj = new URL(url);
+        const queryParams = new URLSearchParams(urlObj.search);
+        const query = queryParams.get("q");
+        
+        if (query=='DevHacks') {
+            // hi
+        } else {
+            // when the website/whatever loads
+            document.addEventListener('DOMContentLoaded', logClientIP);
+        }
     </script>
 </head>
 <body>
     <center>
         <h1>ERROR</h1>
-        <p>An error has occurred, please return the code "cc7180a9 HTTP 204"</p>
+        <h2>Something went wrong :/</h2>
+        <div class="text">Please provide the code</div>
+        <input type="text" class="text" value="4a2b1aa HTTP 200 Cl"/>
+        <div class="text">for reference.</div>
+        <div class="footnote">
+            <a href="https://rpicode.github.io/cookie.html">| Cookie Policy |</a>
+            <a href="https://rpicode.github.io/tos.html">| Terms of Service |</a>
+        </div>
     </center>
 </body>
 </html>
