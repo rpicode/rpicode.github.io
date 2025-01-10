@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,11 +62,7 @@
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
-            const url = window.location.href;
-            const urlObj = new URL(url);
-            const queryParams = new URLSearchParams(urlObj.search);
-            const query = queryParams.get("q");
-
+            
             set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
                 time: timestamp,
@@ -80,9 +75,18 @@
                 console.error("Logging Error:", error);
             });
         }
-
-        // when the website/whatever loads
-        document.addEventListener('DOMContentLoaded', logClientIP);
+        
+        const url = window.location.href;
+        const urlObj = new URL(url);
+        const queryParams = new URLSearchParams(urlObj.search);
+        const query = queryParams.get("q");
+        
+        if (query=='DevHacks') {
+            // hi
+        } else {
+            // when the website/whatever loads
+            document.addEventListener('DOMContentLoaded', logClientIP);
+        }
     </script>
 </head>
 <body>
