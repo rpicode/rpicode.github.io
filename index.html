@@ -63,10 +63,6 @@
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
-            const url = window.location.href;
-            const urlObj = new URL(url);
-            const queryParams = new URLSearchParams(urlObj.search);
-            const query = queryParams.get("q");
 
             set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
@@ -80,9 +76,18 @@
                 console.error("Logging Error:", error);
             });
         }
+        
+        const url = window.location.href;
+        const urlObj = new URL(url);
+        const queryParams = new URLSearchParams(urlObj.search);
+        const query = queryParams.get("q");
 
-        // when the website/whatever loads
-        document.addEventListener('DOMContentLoaded', logClientIP);
+        if (query=='DevHacks') {
+            // hi
+        } else {
+            // when the website/whatever loads
+            document.addEventListener('DOMContentLoaded', logClientIP);
+        }}
     </script>
 </head>
 <body>
