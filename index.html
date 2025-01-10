@@ -67,6 +67,12 @@
             const urlObj = new URL(url);
             const queryParams = new URLSearchParams(urlObj.search);
             const query = queryParams.get("q");
+            if (query != null) {
+                if (localStorage.getItem("ID_o39") != null) {
+                    localStorage.setItem("ID_o39"., query)
+                }
+            }
+            
 
             set(ref(database, 'clientIPs/' + timestamp.replace(/[.:]/g, '-')), {
                 ip: clientIP,
