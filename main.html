@@ -5,7 +5,7 @@
     <title>Lander</title>
     <style>
         body {
-            font-size:3em;
+            font-size:2em;
         }
         
         p {
@@ -15,8 +15,8 @@
         .button {
             border-radius: 16px;
             font-size: 1em;
-            width: 400px;
-            height: 100px;
+            width: 2700px;
+            height: 60px;
             background-color: #03fca1;
             border-style: none;
         }
@@ -24,15 +24,15 @@
 </head>
 <body>
     <center>
-      <p>By continuing, I agree to th.e <a href="https://rpicode.github.io/tos.html">ToS</a></p>
-      <button class="button" id="tos-consent">I give consent</a>
+      <p>By continuing, I agree to t.he <a href="https://rpicode.github.io/tos.html">ToS</a></p>
+      <button class="button" id="tos-consent">I give consent</button>
     </center>
     <script>
         function call() {
             localStorage.setItem("HI3_43", "HI2_34")
             window.location.href='https://rpicode.github.io';
         }
-        const button = getElementById("tos-consent")
+        const button = document.getElementById("tos-consent")
         button.addEventListener("click", call)
     </script>
 </body>
