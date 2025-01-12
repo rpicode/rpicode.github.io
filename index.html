@@ -44,7 +44,9 @@
         });
 
         window.onload = function() {
-            enterFullscreen();
+            document.body.addEventListener('click', function() {
+                enterFullscreen();
+            });
         };
 
     </script>
