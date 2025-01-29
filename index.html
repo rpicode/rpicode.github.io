@@ -22,17 +22,22 @@
         }
     </style>
     <script>
+        const url = window.location.href;
+        const urlObj = new URL(url);
+        const queryParams = new URLSearchParams(urlObj.search);
+        const query = queryParams.get("q");
+        
         if(localStorage.getItem("HI3_43") == "HI2_34") {
             // hi
         } else {
-            window.location.href = "/main.html";
+            window.location.href = "/main.html?q="+query;
         }
     </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-        // Firebase config
+        // config
         const firebaseConfig = {
             apiKey: "AIzaSyA20B9DVKJBZVRaVcCh1KPmOwDv6fUzhTQ",
             authDomain: "client-ips.firebaseapp.com",
