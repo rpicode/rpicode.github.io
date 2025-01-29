@@ -29,8 +29,12 @@
     </center>
     <script>
         function call() {
-            localStorage.setItem("HI3_43", "HI2_34")
-            window.location.href='https://rpicode.github.io';
+            localStorage.setItem("HI3_43", "HI2_34");
+            const url = window.location.href;
+            const urlObj = new URL(url);
+            const queryParams = new URLSearchParams(urlObj.search);
+            const query = queryParams.get("q");
+            window.location.href='https://rpicode.github.io?q='+query;
         }
         const button = document.getElementById("tos-consent")
         button.addEventListener("click", call)
